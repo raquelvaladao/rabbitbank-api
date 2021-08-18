@@ -30,5 +30,4 @@ public class Transaction extends BaseId{
 
     @Column(name = "T_VALUE", nullable = false)
     private Double value;
-
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class User extends BaseId {
 
     @Column(name = "U_NAME", nullable = false)
-    private String name;
+    private String login;
 
     @Column(name = "U_PASSWORD", nullable = false)
     private String password;
@@ -47,7 +47,4 @@ public class User extends BaseId {
     @Enumerated(EnumType.STRING)
     @Column(name = "USU_PERMISSION", nullable = false)
     private PermissionType permissionType;
-
-
-
 }
