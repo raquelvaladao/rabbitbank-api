@@ -4,9 +4,9 @@ spring:
     name: rabbitbank
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/rabbitbank
-    username: postgres
-    password: 242400Op@!!@@
+    url: jdbc:postgresql://localhost:5432/rabbitbank //change db port
+    username: db-username
+    password: db-password 
     initialization-mode: always
   api:
     version: 1.0.0
