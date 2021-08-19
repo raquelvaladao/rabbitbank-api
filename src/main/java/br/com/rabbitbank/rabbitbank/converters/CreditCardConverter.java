@@ -17,7 +17,6 @@ public class CreditCardConverter extends BaseConverter<CreditCardDTO, CreditCard
     @Autowired
     private IUserService userService;
 
-
     @Override
     public CreditCardDTO mapEntityToDTO(CreditCard entity) {
         ModelMapper modelMapper = new ModelMapper();

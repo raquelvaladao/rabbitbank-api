@@ -1,4 +1,4 @@
-package br.com.rabbitbank.rabbitbank.service;
+package br.com.rabbitbank.rabbitbank.service.impl;
 
 import br.com.rabbitbank.rabbitbank.converters.TransactionConverter;
 import br.com.rabbitbank.rabbitbank.dto.TransactionDTO;
