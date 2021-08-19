@@ -1,14 +1,34 @@
-package br.com.rabbitbank.rabbitbank.serviceImp;
+package br.com.rabbitbank.rabbitbank.service.serviceImp;
 
+import br.com.rabbitbank.rabbitbank.converters.TransactionConverter;
 import br.com.rabbitbank.rabbitbank.dto.TransactionDTO;
 import br.com.rabbitbank.rabbitbank.model.Transaction;
+import br.com.rabbitbank.rabbitbank.repository.TransactionRepository;
+import br.com.rabbitbank.rabbitbank.service.ICreditCardService;
 import br.com.rabbitbank.rabbitbank.service.ITransactionService;
+import br.com.rabbitbank.rabbitbank.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TransactionService implements ITransactionService {
+    @Autowired
+    private TransactionConverter transactionConverter;
+
+    @Autowired
+    private IUserService userService;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    @Autowired
+    private ICreditCardService creditCardService;
+
+
     @Override
     public TransactionDTO process(TransactionDTO transactionDTO) {
         Transaction transaction = saveTransaction(transactionDTO);
-        creditCardService.save(transactionDTO.getCreditCard());
+        creditCardService.saveCreditCard(transactionDTO.getCreditCard());
         //async task, check if it is used, since the transaction already happened.
         userService.insertNewBalance(transaction, transactionDTO.getIsCreditCard());
         return transactionConverter.mapEntityToDTO(transaction);
