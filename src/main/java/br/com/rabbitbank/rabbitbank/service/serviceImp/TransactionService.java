@@ -8,6 +8,8 @@ import br.com.rabbitbank.rabbitbank.service.ICreditCardService;
 import br.com.rabbitbank.rabbitbank.service.ITransactionService;
 import br.com.rabbitbank.rabbitbank.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,7 +26,6 @@ public class TransactionService implements ITransactionService {
     @Autowired
     private ICreditCardService creditCardService;
 
-
     @Override
     public TransactionDTO process(TransactionDTO transactionDTO) {
         Transaction transaction = saveTransaction(transactionDTO);
@@ -34,10 +35,18 @@ public class TransactionService implements ITransactionService {
         return transactionConverter.mapEntityToDTO(transaction);
     }
 
+    @Override
+    public Page<TransactionDTO> listItems(PageableDefault pagination, String login) {
+        Page<Transaction> transactionsPaged = transactionRepository.findByOrigin_LoginOrDestiny_Login(login, login, pagination);
+        return transactionConverter.ParsePageEntityToDTO(transactionsPaged);
+    }
+
     private Transaction saveTransaction(TransactionDTO transactionDTO) {
         Transaction transaction = transactionConverter.mapDTOToEntity(transactionDTO);
 
         userService.validate(transaction.getDestiny(), transaction.getOrigin());
         return transactionRepository.save(transaction);
     }
+
+
 }

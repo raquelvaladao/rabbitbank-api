@@ -3,11 +3,10 @@ package br.com.rabbitbank.rabbitbank.resource;
 import br.com.rabbitbank.rabbitbank.dto.TransactionDTO;
 import br.com.rabbitbank.rabbitbank.service.ITransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -27,4 +26,12 @@ public class TransactionResource extends BaseResource<TransactionDTO> {
                 "/transactions/{code}",
                 resultOfTransaction.getCode());
     }
-}
+
+    @GetMapping
+    public ResponseEntity<Page<TransactionDTO>> listTransactions(@PageableDefault(page = 0, size = 20) PageableDefault pagination,
+                                                           @RequestParam String login) {
+        Page<TransactionDTO> dtoTransactions = transactionService.listItems(pagination, login);
+        return answerPaginatedListOfItems(dtoTransactions);
+    }
+
+    }

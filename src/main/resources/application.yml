@@ -1,0 +1,20 @@
+#Database
+spring:
+  application:
+    name: rabbitbank
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:54327/rabbitbank
+    username: postgres
+    password: Postgres2021!
+    initialization-mode: always
+  api:
+    version: 1.0.0
+#JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      format_sql: true
