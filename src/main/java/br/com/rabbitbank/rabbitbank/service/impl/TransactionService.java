@@ -9,6 +9,7 @@ import br.com.rabbitbank.rabbitbank.service.ITransactionService;
 import br.com.rabbitbank.rabbitbank.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public class TransactionService implements ITransactionService {
     }
 
     @Override
-    public Page<TransactionDTO> listItems(PageableDefault pagination, String login) {
+    public Page<TransactionDTO> listItems(Pageable pagination, String login) {
         Page<Transaction> transactionsPaged = transactionRepository.findByOrigin_LoginOrDestiny_Login(login, login, pagination);
         return transactionConverter.ParsePageEntityToDTO(transactionsPaged);
     }

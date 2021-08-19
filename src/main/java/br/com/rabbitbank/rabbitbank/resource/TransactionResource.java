@@ -3,6 +3,7 @@ package br.com.rabbitbank.rabbitbank.resource;
 import br.com.rabbitbank.rabbitbank.dto.TransactionDTO;
 import br.com.rabbitbank.rabbitbank.service.ITransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.data.domain.Page;
@@ -28,7 +29,7 @@ public class TransactionResource extends BaseResource<TransactionDTO> {
     }
 
     @GetMapping
-    public ResponseEntity<Page<TransactionDTO>> listTransactions(@PageableDefault(page = 0, size = 20) PageableDefault pagination,
+    public ResponseEntity<Page<TransactionDTO>> listTransactions(@PageableDefault(page = 0, size = 20) Pageable pagination,
                                                            @RequestParam String login) {
         Page<TransactionDTO> dtoTransactions = transactionService.listItems(pagination, login);
         return answerPaginatedListOfItems(dtoTransactions);
