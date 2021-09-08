@@ -18,3 +18,8 @@ spring:
       database: postgresql
       database-platform: org.hibernate.dialect.PostgreSQLDialect
       format_sql: true
+
+rabbitbank:
+  jwt:
+    expiration: 86400000
+    secretString: '8pK_Lp/~J<0UBzIH({0}CBPTAQAQ0u]sA|D"eB><V{ZoWyZhBE+-ygn|@EZhJ_=}@ygp;H%T9M3SlKq&};-Tp"_pJ/}%[jLIzxTi/5]fGm%Y@;U>Z+"/(9v@D/`XUJv-4TaZw^bs/n?MfFRYs%WtFKq&};-Tp"@,*UtH!Rm9>{xD_+:*7U9o)_@^H$l9N%I~O^rl:j8jo!-HbpmLQt)x
