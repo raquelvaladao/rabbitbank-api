@@ -2,7 +2,7 @@ package br.com.rabbitbank.rabbitbank.resource;
 
 import br.com.rabbitbank.rabbitbank.dto.LoginDTO;
 import br.com.rabbitbank.rabbitbank.dto.TokenDTO;
-import br.com.rabbitbank.rabbitbank.service.impl.TokenService;
+import br.com.rabbitbank.rabbitbank.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/autentication")
-public class AutenticationResource extends BaseResource<TokenDTO> {
+public class AuthenticationResource extends BaseResource<TokenDTO> {
 
     @Autowired
     private AuthenticationManager authManager;         //configuraremos o service que irá buscar o usuário no banco.

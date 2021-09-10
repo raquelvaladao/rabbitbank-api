@@ -1,4 +1,4 @@
-package br.com.rabbitbank.rabbitbank.service.impl;
+package br.com.rabbitbank.rabbitbank.service;
 
 import br.com.rabbitbank.rabbitbank.model.User;
 
