@@ -1,3 +1,4 @@
+
 MVC Spring boot project that makes use of PostgreSQL as remote database.
 The purpose of this project is to fully understand the process of making and consuming web services, with Kotlin Android as a front-end (this app will appear here soon).
 
@@ -18,9 +19,15 @@ main <br>
     
 <h3>To run the project: </h3> 
 run -> mvn spring-boot:run
-
 User: user <br>
 Password: scroll up your cmd and copy the key after "Using generated security password: "
 
 <h3>Docs: </h3> 
-![image](https://user-images.githubusercontent.com/58961790/131026545-7ff76346-731e-4e3b-b556-c58d199e055f.png)
+
+![](https://user-images.githubusercontent.com/58961790/133006685-e38fb649-5377-47ac-ad6a-c76c0d0ec32b.png)
+
+<h3>Authentication: </h3> 
+JWT pattern to authenticate users.
+
+<h3>To be done: </h3> 
+Unit tests.
