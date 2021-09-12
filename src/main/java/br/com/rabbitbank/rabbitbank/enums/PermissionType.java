@@ -1,4 +1,4 @@
-package br.com.rabbitbank.rabbitbank.model;
+package br.com.rabbitbank.rabbitbank.enums;
 
 public enum PermissionType {
 

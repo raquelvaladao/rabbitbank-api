@@ -2,6 +2,7 @@ package br.com.rabbitbank.rabbitbank.service;
 
 import br.com.rabbitbank.rabbitbank.model.User;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,5 +35,23 @@ public class TokenService {
                 .setIssuedAt(expirationTime)
                 .signWith(SignatureAlgorithm.HS256, secretString)
                 .compact();
+    }
+
+    public Boolean checkTokenValidity(String token) {
+        try {
+            Jwts.parser().setSigningKey(this.secretString).parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public Long getUserIdFromGeneratedToken(String token) {
+        Claims claims = Jwts
+                .parser()
+                .setSigningKey(this.secretString)
+                .parseClaimsJws(token)
+                .getBody();
+        return Long.parseLong(claims.getSubject());
     }
 }
